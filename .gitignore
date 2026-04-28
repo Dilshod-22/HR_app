@@ -1,0 +1,38 @@
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+/bin/
+/dist/
+
+# Go module cache
+vendor/
+
+# Environment variables (DB parollar, secret keylar) — GitHub ga CHIQMASIN
+.env
+.env.local
+.env.*.local
+# .env.example esa tracked bo'ladi (parolsiz shablon)
+
+# JetBrains IDE (.idea papkasidagi shaxsiy sozlamalar)
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+.idea/shelf/
+.idea/httpRequests/
+.idea/dataSources/
+.idea/dataSources.local.xml
+*.iws
+*.iml
+
+# OS fayllar
+.DS_Store
+Thumbs.db
+
+# Log fayllar
+*.log
