@@ -4,7 +4,13 @@
       "Bash(docker --version)",
       "Bash(docker-compose --version)",
       "Bash(docker compose *)",
-      "Bash(go get *)"
+      "Bash(go get *)",
+      "Bash(go build *)",
+      "Bash(go run *)",
+      "Bash(curl -s -X POST http://localhost:8082/hash/md5 -H \"Content-Type: application/json\" -d '{\"key_value\":\"hello\"}')",
+      "Bash(curl -s http://localhost:8082/employee)",
+      "Bash(curl -s -X POST http://localhost:8083/hash/md5 -H \"Content-Type: application/json\" -d '{\"key_value\":\"hello\"}')",
+      "Bash(curl -s -X POST http://localhost:8082/hash/md5 -H \"Content-Type: application/json\" -d '{\"key_value\":\"test\"}')"
     ]
   }
 }

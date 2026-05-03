@@ -15,6 +15,7 @@ func EmployeeRoute() *gin.Engine {
 	r.DELETE("/employee/:id", delivery.DeleteEmployee)
 	r.POST("/recovery/:id", delivery.RecoverEmployee)
 	r.DELETE("/employee/softDelete/:id", delivery.SoftDeleteEmployee)
+	r.POST("/hash/md5", delivery.HashMD5)
 
 	return r
 }
