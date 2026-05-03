@@ -6,7 +6,6 @@ import (
 	"crypto/md5"
 	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,17 +33,13 @@ func CreateEmployee(c *gin.Context) {
 }
 
 func UpdateEmployee(c *gin.Context) {
-	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Noto'g'ri ID"})
-		return
-	}
+	id := c.Param("id")
 	var emp domain.Employee
 	if err := c.ShouldBindJSON(&emp); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	if err := usecase.UpdateEmployee(uint(id), emp); err != nil {
+	if err := usecase.UpdateEmployee(id, emp); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -52,12 +47,8 @@ func UpdateEmployee(c *gin.Context) {
 }
 
 func DeleteEmployee(c *gin.Context) {
-	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Noto'g'ri ID"})
-		return
-	}
-	if err := usecase.DeleteEmployee(uint(id)); err != nil {
+	id := c.Param("id")
+	if err := usecase.DeleteEmployee(id); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -65,12 +56,8 @@ func DeleteEmployee(c *gin.Context) {
 }
 
 func SoftDeleteEmployee(c *gin.Context) {
-	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Noto'g'ri ID"})
-		return
-	}
-	if err := usecase.SoftDeleteEmployee(uint(id)); err != nil {
+	id := c.Param("id")
+	if err := usecase.SoftDeleteEmployee(id); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -78,12 +65,8 @@ func SoftDeleteEmployee(c *gin.Context) {
 }
 
 func RecoverEmployee(c *gin.Context) {
-	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Noto'g'ri ID"})
-		return
-	}
-	if err := usecase.RecoverEmployee(uint(id)); err != nil {
+	id := c.Param("id")
+	if err := usecase.RecoverEmployee(id); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}

@@ -13,18 +13,18 @@ func CreateEmployee(emp domain.Employee) error {
 	return repository.CreateEmployee(emp)
 }
 
-func UpdateEmployee(id uint, emp domain.Employee) error {
+func UpdateEmployee(id string, emp domain.Employee) error {
 	return repository.UpdateEmployee(id, emp)
 }
 
-func DeleteEmployee(id uint) error {
+func DeleteEmployee(id string) error {
 	return repository.DeleteEmployee(id)
 }
 
-func SoftDeleteEmployee(id uint) error {
+func SoftDeleteEmployee(id string) error {
 	return repository.SoftDeleteEmployee(id)
 }
 
-func RecoverEmployee(id uint) error {
+func RecoverEmployee(id string) error {
 	return repository.RecoverEmployee(id)
 }

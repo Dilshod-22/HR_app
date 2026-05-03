@@ -27,7 +27,7 @@ func ConnectDB() {
 	fmt.Println("Connected to database")
 
 	if err := DB.AutoMigrate(&domain.Employee{}); err != nil {
-		panic("failed to migrate database")
+		fmt.Println("AutoMigrate warning:", err)
 	}
 }
 

@@ -15,29 +15,26 @@ func GetAllEmployees() ([]domain.Employee, error) {
 	return employees, result.Error
 }
 
-func GetEmployeeByID(id uint) (domain.Employee, error) {
+func GetEmployeeByID(id string) (domain.Employee, error) {
 	var emp domain.Employee
-	result := infrastructure.DB.First(&emp, id)
+	result := infrastructure.DB.First(&emp, "id = ?", id)
 	return emp, result.Error
 }
 
-func UpdateEmployee(id uint, emp domain.Employee) error {
+func UpdateEmployee(id string, emp domain.Employee) error {
 	emp.ID = id
 	return infrastructure.DB.Save(&emp).Error
 }
 
-// Hard delete — bazadan butunlay o'chiradi
-func DeleteEmployee(id uint) error {
-	return infrastructure.DB.Unscoped().Delete(&domain.Employee{}, id).Error
+func DeleteEmployee(id string) error {
+	return infrastructure.DB.Unscoped().Delete(&domain.Employee{}, "id = ?", id).Error
 }
 
-// Soft delete — deleted_at ni belgilaydi
-func SoftDeleteEmployee(id uint) error {
-	return infrastructure.DB.Delete(&domain.Employee{}, id).Error
+func SoftDeleteEmployee(id string) error {
+	return infrastructure.DB.Delete(&domain.Employee{}, "id = ?", id).Error
 }
 
-// Soft delete ni bekor qiladi
-func RecoverEmployee(id uint) error {
+func RecoverEmployee(id string) error {
 	return infrastructure.DB.Unscoped().Model(&domain.Employee{}).
 		Where("id = ?", id).Update("deleted_at", nil).Error
 }
